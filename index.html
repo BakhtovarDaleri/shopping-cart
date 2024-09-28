@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      li {
+        margin-bottom: 5px;
+      }
+      .active {
+        background-color: rgb(161, 192, 161);
+        color: white;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Каталог товаров</h1>
+
+    <ul id="product-list">
+      <li>
+        <span>Товар 1</span>
+        <button onclick="addToCart('Товар 1')">Добавить в корзину</button>
+      </li>
+      <li>
+        <span>Товар 2</span>
+        <button onclick="addToCart('Товар 2')">Добавить в корзину</button>
+      </li>
+      <li>
+        <span>Товар 3</span>
+        <button onclick="addToCart('Товар 3')">Добавить в корзину</button>
+      </li>
+    </ul>
+
+    <h1>Корзина</h1>
+    <ul id="cart"></ul>
+
+    <script>
+      // Находим кнопки
+      const buttons = document.querySelectorAll("button");
+
+      // Создаем обработчик события на каждую кнопку
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          button.classList.add("active"); // Даем класс на все кнопки
+        });
+      });
+
+      // Функция для добавления в корзину
+      function addToCart(productName) {
+        // Находим элемент корзины
+        const cart = document.querySelector("#cart");
+
+        // Создаем новый элемент списка li для корзины
+        const newItem = document.createElement("li");
+
+        //
+        const itemText = document.createTextNode(productName);
+
+        // Добавляем текстовый узел в корзину
+        newItem.append(itemText);
+
+        // Добавляем новый элемент списка li в корзину
+        cart.append(newItem);
+      }
+    </script>
+  </body>
+</html>
